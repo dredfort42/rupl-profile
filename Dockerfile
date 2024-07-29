@@ -17,7 +17,7 @@ RUN if [ ! -e "/app/local.cfg" ]; then \
 
 FROM scratch
 COPY --from=build /app/profile /app/profile
-COPY --from=build /app/local.cfg /app/local.cfg
+COPY --from=build /app/config.ini /app/config.ini
 
 EXPOSE 4848
 CMD ["/app/profile"]
