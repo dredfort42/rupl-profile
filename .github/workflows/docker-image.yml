@@ -25,7 +25,6 @@ jobs:
 
       - name: Build and push Docker image for profile
         run: |
-          cd profile
           docker pull dredfort/rupl-profile:latest || true
           docker build -t dredfort/rupl-profile:latest .
           docker push dredfort/rupl-profile:latest
