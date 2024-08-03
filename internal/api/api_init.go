@@ -44,24 +44,24 @@ func ApiInit() {
 		panic("auth.url is not set")
 	}
 
-	server.IdentifyPathUser = cfg.Config["auth.identify.path.user"]
+	server.IdentifyPathUser = cfg.Config["auth.path.identify.user"]
 	if server.IdentifyPathUser == "" {
-		panic("auth.identify.path.user is not set")
+		panic("auth.path.identify.user is not set")
 	}
 
-	server.IdentifyPathDevice = cfg.Config["auth.identify.path.device"]
+	server.IdentifyPathDevice = cfg.Config["auth.path.identify.device"]
 	if server.IdentifyPathDevice == "" {
-		panic("auth.identify.path.device is not set")
+		panic("auth.path.identify.device is not set")
 	}
 
-	server.ChangePathEmail = cfg.Config["auth.change.path.email"]
+	server.ChangePathEmail = cfg.Config["auth.path.change.email"]
 	if server.ChangePathEmail == "" {
-		panic("auth.change.path.email is not set")
+		panic("auth.path.change.email is not set")
 	}
 
-	server.DeletePathUser = cfg.Config["auth.delete.path.user"]
+	server.DeletePathUser = cfg.Config["auth.path.delete.user"]
 	if server.DeletePathUser == "" {
-		panic("auth.delete.path.user is not set")
+		panic("auth.path.delete.user is not set")
 	}
 
 	if os.Getenv("DEBUG") != "true" && os.Getenv("DEBUG") != "1" {
