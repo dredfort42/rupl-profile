@@ -6,15 +6,6 @@ import (
 	cfg "github.com/dredfort42/tools/configreader"
 )
 
-// Database is the database struct
-type Database struct {
-	database     *sql.DB
-	tableUsers   string
-	tableDevices string
-}
-
-var db Database
-
 // databaseConnect connects to the database and returns a pointer to it
 func databaseConnect() {
 	host := cfg.Config["db.host"]
