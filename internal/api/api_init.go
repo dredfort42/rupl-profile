@@ -36,7 +36,8 @@ func ApiInit() {
 
 	server.CorsStatus = cfg.Config["profile.cors"]
 	if server.CorsStatus == "" {
-		panic("profile.cors is not set")
+		loger.Warning("profile.cors is not set | CORS is disabled")
+		server.CorsStatus = "false"
 	}
 
 	server.AuthServerURL = cfg.Config["auth.url"]
