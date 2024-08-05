@@ -3,7 +3,7 @@ package db
 // usersTableCheck() checks if the users table exists, if not, it creates it
 func usersTableCheck() {
 	query := `
-		CREATE TABLE IF NOT EXISTS ` + db.tableUsers + ` (
+		CREATE TABLE IF NOT EXISTS ` + DB.TableUsers + ` (
 			email VARCHAR(255) PRIMARY KEY,
 			first_name VARCHAR(255) NOT NULL,
 			last_name VARCHAR(255) NOT NULL,
@@ -14,7 +14,7 @@ func usersTableCheck() {
 		);
 	`
 
-	_, err := db.database.Exec(query)
+	_, err := DB.Database.Exec(query)
 	if err != nil {
 		panic(err)
 	}
@@ -23,7 +23,7 @@ func usersTableCheck() {
 // devicesTableCheck checks if the devices table exists, if not, it creates it
 func devicesTableCheck() {
 	query := `
-			CREATE TABLE IF NOT EXISTS ` + db.tableDevices + ` (
+			CREATE TABLE IF NOT EXISTS ` + DB.TableDevices + ` (
 				email VARCHAR(255) NOT NULL,
 				device_uuid VARCHAR(255) NOT NULL,
 				device_model VARCHAR(255) NOT NULL,
@@ -37,7 +37,7 @@ func devicesTableCheck() {
 			);
 		`
 
-	_, err := db.database.Exec(query)
+	_, err := DB.Database.Exec(query)
 	if err != nil {
 		panic(err)
 	}

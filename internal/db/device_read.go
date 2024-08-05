@@ -11,12 +11,12 @@ import (
 func DeviceExistsCheck(email string, deviceUUID string) (result bool) {
 	query := `
 		SELECT 1 
-		FROM ` + db.tableDevices + ` 
+		FROM ` + DB.TableDevices + ` 
 		WHERE email = $1
 		AND device_uuid = $2;
 	`
 
-	err := db.database.QueryRow(query, email, deviceUUID).Scan(&result)
+	err := DB.Database.QueryRow(query, email, deviceUUID).Scan(&result)
 	if err != nil && err != sql.ErrNoRows {
 		loger.Error("Failed to check if device exists in the database", err)
 	}
@@ -28,11 +28,11 @@ func DeviceExistsCheck(email string, deviceUUID string) (result bool) {
 func UserDevicesExistsCheck(email string) (result bool) {
 	query := `
 		SELECT 1 
-		FROM ` + db.tableDevices + ` 
+		FROM ` + DB.TableDevices + ` 
 		WHERE email = $1;
 	`
 
-	err := db.database.QueryRow(query, email).Scan(&result)
+	err := DB.Database.QueryRow(query, email).Scan(&result)
 	if err != nil && err != sql.ErrNoRows {
 		loger.Error("Failed to check if user has any devices in the database", err)
 	}
@@ -44,11 +44,11 @@ func UserDevicesExistsCheck(email string) (result bool) {
 func DevicesGet(email string) (devices s.UserDevices, err error) {
 	query := `
 		SELECT * 
-		FROM ` + db.tableDevices + ` 
+		FROM ` + DB.TableDevices + ` 
 		WHERE email = $1;
 	`
 
-	rows, err := db.database.Query(query, email)
+	rows, err := DB.Database.Query(query, email)
 	if err != nil {
 		return s.UserDevices{}, err
 	}

@@ -13,12 +13,12 @@ func UserUpdate(user s.User) (err error) {
 	}
 
 	query := `
-		UPDATE ` + db.tableUsers + ` 
+		UPDATE ` + DB.TableUsers + ` 
 		SET first_name = $2, last_name = $3, date_of_birth = $4, gender = $5, updated_at = CURRENT_TIMESTAMP
 		WHERE email = $1
 	`
 
-	_, err = db.database.Exec(query, user.Email, user.FirstName, user.LastName, user.DateOfBirth, user.Gender)
+	_, err = DB.Database.Exec(query, user.Email, user.FirstName, user.LastName, user.DateOfBirth, user.Gender)
 	if err != nil {
 		loger.Error("Failed to update profile in the database", err)
 	}
@@ -33,13 +33,13 @@ func UserEmailChange(email string, newEmail string) (err error) {
 	}
 
 	query := `
-		UPDATE ` + db.tableUsers + ` 
+		UPDATE ` + DB.TableUsers + ` 
 		SET email = $2, 
 			updated_at = CURRENT_TIMESTAMP
 		WHERE email = $1;
 	`
 
-	_, err = db.database.Exec(query, email, newEmail)
+	_, err = DB.Database.Exec(query, email, newEmail)
 	if err != nil {
 		loger.Error("Failed to update email in the users table", err)
 		return
@@ -50,13 +50,13 @@ func UserEmailChange(email string, newEmail string) (err error) {
 	}
 
 	query = `
-		UPDATE ` + db.tableDevices + `
+		UPDATE ` + DB.TableDevices + `
 		SET email = $2, 
 			updated_at = CURRENT_TIMESTAMP
 		WHERE email = $1;
 	`
 
-	_, err = db.database.Exec(query, email, newEmail)
+	_, err = DB.Database.Exec(query, email, newEmail)
 	if err != nil {
 		loger.Error("Failed to update email in the devices table", err)
 	}

@@ -9,22 +9,22 @@ import (
 
 // Database is the database struct
 type Database struct {
-	database     *sql.DB
-	tableUsers   string
-	tableDevices string
+	Database     *sql.DB
+	TableUsers   string
+	TableDevices string
 }
 
-var db Database
+var DB Database
 
 // DatabaseInit initializes the database
 func DatabaseInit() {
-	db.tableUsers = cfg.Config["db.table.profile.users"]
-	if db.tableUsers == "" {
+	DB.TableUsers = cfg.Config["db.table.profile.users"]
+	if DB.TableUsers == "" {
 		panic("db.table.profile.users is empty")
 	}
 
-	db.tableDevices = cfg.Config["db.table.profile.devices"]
-	if db.tableDevices == "" {
+	DB.TableDevices = cfg.Config["db.table.profile.devices"]
+	if DB.TableDevices == "" {
 		panic("db.table.profile.devices is empty")
 	}
 

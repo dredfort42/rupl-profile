@@ -11,11 +11,11 @@ import (
 func UserExistsCheck(email string) (result bool) {
 	query := `
 		SELECT 1
-	 	FROM ` + db.tableUsers + ` 
+	 	FROM ` + DB.TableUsers + ` 
 		WHERE email = $1
 	`
 
-	err := db.database.QueryRow(query, email).Scan(&result)
+	err := DB.Database.QueryRow(query, email).Scan(&result)
 	if err != nil && err != sql.ErrNoRows {
 		loger.Error("Failed to check if profile exists in the database", err)
 	}
@@ -27,11 +27,11 @@ func UserExistsCheck(email string) (result bool) {
 func UserGet(email string) (user s.User, err error) {
 	query := `
 		SELECT email, first_name, last_name, date_of_birth, gender
-		FROM ` + db.tableUsers + ` 
+		FROM ` + DB.TableUsers + ` 
 		WHERE email = $1
 	`
 
-	err = db.database.QueryRow(query, email).Scan(&user.Email, &user.FirstName, &user.LastName, &user.DateOfBirth, &user.Gender)
+	err = DB.Database.QueryRow(query, email).Scan(&user.Email, &user.FirstName, &user.LastName, &user.DateOfBirth, &user.Gender)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			err = nil

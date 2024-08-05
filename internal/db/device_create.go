@@ -13,7 +13,7 @@ func DeviceCreate(email string, device s.Device) (err error) {
 	}
 
 	query := `
-		INSERT INTO ` + db.tableDevices + ` (email, device_model, device_name, system_name, system_version, device_uuid, app_version) 
+		INSERT INTO ` + DB.TableDevices + ` (email, device_model, device_name, system_name, system_version, device_uuid, app_version) 
 		VALUES ($1, $2, $3, $4, $5, $6, $7)
 		ON CONFLICT (email, device_uuid) DO UPDATE SET
 			device_model = $2,
@@ -24,7 +24,7 @@ func DeviceCreate(email string, device s.Device) (err error) {
 			updated_at = CURRENT_TIMESTAMP;
 	`
 
-	_, err = db.database.Exec(query, email, device.DeviceModel, device.DeviceName, device.SystemName, device.SystemVersion, device.DeviceUUID, device.AppVersion)
+	_, err = DB.Database.Exec(query, email, device.DeviceModel, device.DeviceName, device.SystemName, device.SystemVersion, device.DeviceUUID, device.AppVersion)
 	if err != nil {
 		loger.Error("Failed to create device in the database", err)
 	}

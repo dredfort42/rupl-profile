@@ -11,11 +11,11 @@ func UserDelete(email string) (err error) {
 	}
 
 	query := `
-		DELETE FROM ` + db.tableUsers + ` 
+		DELETE FROM ` + DB.TableUsers + ` 
 		WHERE email = $1;
 	`
 
-	_, err = db.database.Exec(query, email)
+	_, err = DB.Database.Exec(query, email)
 	if err != nil {
 		loger.Error("Failed to delete user from the database", err)
 		return
@@ -26,11 +26,11 @@ func UserDelete(email string) (err error) {
 	}
 
 	query = `
-		DELETE FROM ` + db.tableDevices + ` 
+		DELETE FROM ` + DB.TableDevices + ` 
 		WHERE email = $1;
 	`
 
-	_, err = db.database.Exec(query, email)
+	_, err = DB.Database.Exec(query, email)
 	if err != nil {
 		loger.Error("Failed to delete devices from the database", err)
 	}

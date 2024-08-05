@@ -2,6 +2,7 @@ package api
 
 import (
 	"os"
+	"profile/internal/db"
 
 	cfg "github.com/dredfort42/tools/configreader"
 	loger "github.com/dredfort42/tools/logprinter"
@@ -77,7 +78,6 @@ func ApiInit() {
 		router.Use(cors.Default())
 	}
 
-	// Apply the middleware to the routes you want to protect
 	authorized := router.Group("/", AuthMiddleware())
 	{
 		authorized.POST("/api/v1/profile/user", UserCreate)
@@ -91,10 +91,9 @@ func ApiInit() {
 		authorized.DELETE("/api/v1/profile/devices", DeviceDelete)
 	}
 
-	// // Unprotected route
-	// router.GET("/unprotected", UnprotectedEndpoint)
-
 	url := server.Host + ":" + server.Port
 	loger.Success("Service successfully started", url)
 	router.Run(url)
+
+	db.DB.Database.Close()
 }
