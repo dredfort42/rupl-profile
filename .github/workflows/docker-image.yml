@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Build and push Docker image for profile
+      - name: Build and push Docker image for profile service
         run: |
           docker pull dredfort/rupl-profile:latest || true
           docker build -t dredfort/rupl-profile:latest .
