@@ -11,13 +11,9 @@ COPY . /app
 WORKDIR /app
 
 RUN CGO_ENABLED=0 go build -o ./profile /app/cmd/profile
-RUN if [ ! -e "/app/local.cfg" ]; then \
-    touch "/app/local.cfg"; \
-    fi
 
 FROM scratch
 COPY --from=build /app/profile /app/profile
-COPY --from=build /app/config.ini /app/config.ini
 
 EXPOSE 4848
 CMD ["/app/profile"]
