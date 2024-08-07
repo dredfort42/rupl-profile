@@ -82,6 +82,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Missing required fields"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "409":
           description: |
             Profile already exists
@@ -143,6 +156,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Missing or invalid token"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "404":
           description: |
             Not Found
@@ -222,6 +248,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Invalid request"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "404":
           description: |
             Not Found
@@ -309,6 +348,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Invalid request"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "404":
           description: |
             Not Found
@@ -409,6 +461,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Invalid request"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "500":
           description: |
             Internal Server Error
@@ -501,6 +566,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Device struct check failed | ..."
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "500":
           description: |
             Internal Server Error
@@ -550,6 +628,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Missing or invalid token"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "500":
           description: |
             Internal Server Error
@@ -621,6 +712,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Device struct check failed | ..."
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "404":
           description: |
             Not Found
@@ -707,6 +811,19 @@ paths:
                   value:
                     error: "invalid_request"
                     error_description: "Missing device UUID"
+        "401":
+          description: |
+            Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalidToken:
+                  summary: Invalid token
+                  value:
+                    error: "access_denied"
+                    error_description: "Unauthorized"
         "404":
           description: |
             Not Found
